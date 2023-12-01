@@ -4,11 +4,13 @@ import { Server } from 'socket.io';
 import makeStoppable from 'stoppable';
 import cors from 'cors';
 
+import config from './config.js';
+
 const app = express();
 const httpServer = http.createServer(app);
 const io = new Server(httpServer, {
   cors: {
-    origin: ['http://localhost:3000'],
+    origin: [config.client],
     methods: ['GET', 'POST'],
   },
 });
